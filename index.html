@@ -110,7 +110,7 @@
         <!-- Product Selection -->
         <section id="productSelection" class="mb-8">
             <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Selecciona el Tipo de Producto a Cancelar</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                 <button onclick="selectProduct('credito')" class="product-btn bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-nu-purple group">
                     <div class="w-16 h-16 mx-auto mb-4 bg-nu-purple rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,8 +127,18 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                         </svg>
                     </div>
-                    <h3 class="font-semibold text-gray-800 text-center">Nu Control / Abre Caminos</h3>
+                    <h3 class="font-semibold text-gray-800 text-center">Nu Control</h3>
                     <p class="text-sm text-gray-500 text-center mt-2">Tarjeta de Crédito</p>
+                </button>
+
+                <button onclick="selectProduct('abrecaminos')" class="product-btn bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-nu-purple group">
+                    <div class="w-16 h-16 mx-auto mb-4 bg-nu-purple rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-gray-800 text-center">Abre Caminos</h3>
+                    <p class="text-sm text-gray-500 text-center mt-2">Tarjeta Morada</p>
                 </button>
 
                 <button onclick="selectProduct('cuenta')" class="product-btn bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-nu-purple group">
@@ -141,7 +151,7 @@
                     <p class="text-sm text-gray-500 text-center mt-2">Débito</p>
                 </button>
 
-                <button onclick="selectProduct('multiproducto')" class="product-btn bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-nu-purple group">
+                <button onclick="showMultiproductoOptions()" class="product-btn bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-nu-purple group">
                     <div class="w-16 h-16 mx-auto mb-4 bg-nu-purple rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                         <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
@@ -150,6 +160,47 @@
                     <h3 class="font-semibold text-gray-800 text-center">Multiproducto</h3>
                     <p class="text-sm text-gray-500 text-center mt-2">Crédito + Débito</p>
                 </button>
+            </div>
+
+            <!-- Sub-selector Multiproducto -->
+            <div id="multiproductoOptions" class="hidden mt-6 bg-white rounded-2xl shadow-lg p-6 border-2 border-nu-purple fade-in">
+                <h3 class="text-lg font-bold text-gray-800 mb-4 text-center">Selecciona el tipo de Tarjeta de Crédito:</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="selectProduct('multi_credito')" class="bg-nu-gray p-4 rounded-xl hover:bg-nu-purple/10 transition-all border-2 border-transparent hover:border-nu-purple">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center">
+                                <span class="text-white text-lg">💳</span>
+                            </div>
+                            <div class="text-left">
+                                <p class="font-semibold text-gray-800">Crédito Tradicional</p>
+                                <p class="text-xs text-gray-500">+ Cuenta de Ahorros</p>
+                            </div>
+                        </div>
+                    </button>
+                    <button onclick="selectProduct('multi_nucontrol')" class="bg-nu-gray p-4 rounded-xl hover:bg-nu-purple/10 transition-all border-2 border-transparent hover:border-nu-purple">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center">
+                                <span class="text-white text-lg">🛡️</span>
+                            </div>
+                            <div class="text-left">
+                                <p class="font-semibold text-gray-800">Nu Control</p>
+                                <p class="text-xs text-gray-500">+ Cuenta de Ahorros</p>
+                            </div>
+                        </div>
+                    </button>
+                    <button onclick="selectProduct('multi_abrecaminos')" class="bg-nu-gray p-4 rounded-xl hover:bg-nu-purple/10 transition-all border-2 border-transparent hover:border-nu-purple">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center">
+                                <span class="text-white text-lg">🚀</span>
+                            </div>
+                            <div class="text-left">
+                                <p class="font-semibold text-gray-800">Abre Caminos</p>
+                                <p class="text-xs text-gray-500">+ Cuenta de Ahorros</p>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+                <button onclick="hideMultiproductoOptions()" class="mt-4 text-gray-500 hover:text-gray-700 text-sm underline w-full text-center">Cancelar</button>
             </div>
         </section>
 
@@ -204,120 +255,160 @@
                 </div>
             </div>
 
-            <!-- SECTION 1: Inicio y Seguridad -->
+            <!-- SECTION 1: Verificación de Dispositivo -->
             <div class="section-card bg-white rounded-2xl shadow-md p-6 mb-6 slide-in" style="animation-delay: 0.1s">
                 <div class="flex items-center space-x-3 mb-4">
                     <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center text-white font-bold">1</div>
-                    <h3 class="text-xl font-bold text-gray-800">Inicio y Seguridad</h3>
+                    <h3 class="text-xl font-bold text-gray-800">Verificación de Dispositivo</h3>
                     <span id="section1Status" class="ml-auto px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-600">Pendiente</span>
-                </div>
-
-                <!-- Saludo -->
-                <div class="bg-nu-gray rounded-xl p-4 mb-4">
-                    <h4 class="font-semibold text-gray-700 mb-2">📢 Mensaje de Bienvenida</h4>
-                    <div class="bg-white rounded-lg p-4 border border-gray-200">
-                        <p class="text-gray-700 italic">"Hola <span class="text-nu-purple font-semibold">[Nombre Cliente]</span>, te habla <span class="text-nu-purple font-semibold">[Nombre Agente]</span> del equipo Nu."</p>
-                    </div>
-                    <label class="flex items-center space-x-3 mt-3 cursor-pointer">
-                        <input type="checkbox" id="checkSaludo" onchange="updateProgress()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
-                        <span class="text-gray-700">Saludo realizado</span>
-                    </label>
-                </div>
-
-                <!-- Hard Filters -->
-                <div class="bg-nu-gray rounded-xl p-4 mb-4">
-                    <h4 class="font-semibold text-gray-700 mb-2">🔐 Hard Filters (Validación de Seguridad)</h4>
-                    <div class="space-y-3">
-                        <label class="flex items-center space-x-3 cursor-pointer">
-                            <input type="checkbox" id="checkHardFilter1" onchange="updateProgress(); validateHardFilters()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
-                            <span class="text-gray-700">Dato de Seguridad 1 Verificado</span>
-                        </label>
-                        <label class="flex items-center space-x-3 cursor-pointer">
-                            <input type="checkbox" id="checkHardFilter2" onchange="updateProgress(); validateHardFilters()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
-                            <span class="text-gray-700">Dato de Seguridad 2 Verificado</span>
-                        </label>
-                    </div>
-                    <div id="hardFilterAlert" class="hidden mt-4 bg-nu-danger/10 border-2 border-nu-danger rounded-lg p-3 alert-shake">
-                        <div class="flex items-center space-x-2">
-                            <svg class="w-5 h-5 text-nu-danger" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                            </svg>
-                            <span class="text-nu-danger font-semibold">⚠️ Para cancelar se requieren 2 Hard Filters. 1 Hard Filter solo es válido para Desistimiento.</span>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Dispositivo Autorizado -->
                 <div class="bg-nu-gray rounded-xl p-4">
-                    <h4 class="font-semibold text-gray-700 mb-2">📱 Verificación de Dispositivo</h4>
-                    <p class="text-sm text-gray-600 mb-3">Revisar en el sistema que el dispositivo esté autorizado.</p>
+                    <h4 class="font-semibold text-gray-700 mb-2">📱 Estado del Dispositivo</h4>
+                    <p class="text-sm text-gray-600 mb-3">Revisar en el sistema que el dispositivo esté autorizado (TRUSTED).</p>
                     <div class="space-y-3">
                         <label class="flex items-center space-x-3 cursor-pointer">
-                            <input type="radio" name="deviceStatus" id="deviceTrusted" onchange="updateProgress(); checkDeviceStatus()" class="w-5 h-5 text-nu-purple focus:ring-nu-purple">
+                            <input type="radio" name="deviceStatus" id="deviceTrusted" onchange="checkDeviceStatus(); updateProgress()" class="w-5 h-5 text-nu-purple focus:ring-nu-purple">
                             <span class="text-nu-success font-medium">✅ TRUSTED (Autorizado)</span>
                         </label>
                         <label class="flex items-center space-x-3 cursor-pointer">
-                            <input type="radio" name="deviceStatus" id="deviceUntrusted" onchange="updateProgress(); checkDeviceStatus()" class="w-5 h-5 text-nu-purple focus:ring-nu-purple">
-                            <span class="text-nu-danger font-medium">❌ UNTRUSTED / PENDING VALIDATION</span>
+                            <input type="radio" name="deviceStatus" id="deviceUntrusted" onchange="checkDeviceStatus(); updateProgress()" class="w-5 h-5 text-nu-purple focus:ring-nu-purple">
+                            <span class="text-nu-danger font-medium">❌ UNTRUSTED (No autorizado)</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="radio" name="deviceStatus" id="devicePending" onchange="checkDeviceStatus(); updateProgress()" class="w-5 h-5 text-nu-purple focus:ring-nu-purple">
+                            <span class="text-nu-warning font-medium">⏳ PENDING VALIDATION (Pendiente validación)</span>
                         </label>
                     </div>
-                    <div id="deviceAlert" class="hidden mt-4 bg-nu-danger/10 border-2 border-nu-danger rounded-lg p-3">
-                        <p class="text-nu-danger font-semibold">⚠️ El dispositivo no está autorizado. No se puede continuar con la cancelación hasta que el dispositivo sea validado.</p>
+                    
+                    <!-- Alert para UNTRUSTED -->
+                    <div id="deviceAlertUntrusted" class="hidden mt-4 bg-nu-danger/10 border-2 border-nu-danger rounded-lg p-4">
+                        <p class="text-nu-danger font-semibold mb-3">❌ Dispositivo UNTRUSTED - Informar al cliente:</p>
+                        <div class="bg-white rounded-lg p-4 border border-nu-danger/30 text-gray-700 text-sm">
+                            <p class="font-semibold mb-2">Paso 1: Reinstalar la App</p>
+                            <ol class="list-decimal list-inside space-y-1 mb-3">
+                                <li>Desinstalar la aplicación Nu del dispositivo.</li>
+                                <li>Volver a instalar la aplicación desde la tienda oficial.</li>
+                            </ol>
+                            <p class="font-semibold mb-2">Paso 2: Autorizar el dispositivo</p>
+                            <ol class="list-decimal list-inside space-y-1 mb-3">
+                                <li>Inicia sesión en la app.</li>
+                                <li>En la página principal verás un aviso sobre un nuevo dispositivo detectado.</li>
+                                <li>Da clic y selecciona "Autorizar mi dispositivo".</li>
+                                <li>Sigue el flujo de la app con los botones morados.</li>
+                                <li>La app te pedirá una foto de tu rostro para validación facial.</li>
+                            </ol>
+                            <p class="font-semibold mb-2">Tips para la foto:</p>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Estar en un ambiente bien iluminado.</li>
+                                <li>No cubrir el rostro con accesorios.</li>
+                                <li>Evitar estar a contraluz.</li>
+                            </ul>
+                        </div>
+                        <button onclick="copyAuthUntrusted()" class="copy-btn mt-3 bg-nu-danger text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors flex items-center space-x-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>Copiar Instrucciones</span>
+                        </button>
+                    </div>
+
+                    <!-- Alert para PENDING VALIDATION -->
+                    <div id="deviceAlertPending" class="hidden mt-4 bg-nu-warning/10 border-2 border-nu-warning rounded-lg p-4">
+                        <p class="text-nu-warning font-semibold mb-3">⏳ Pendiente validación - Informar al cliente cómo autorizarlo:</p>
+                        <div class="bg-white rounded-lg p-4 border border-nu-warning/30 text-gray-700 text-sm">
+                            <p class="font-semibold mb-2">Pasos para autorizar el dispositivo:</p>
+                            <ol class="list-decimal list-inside space-y-1 mb-3">
+                                <li>Inicia sesión en la app.</li>
+                                <li>En la página principal verás un aviso sobre un nuevo dispositivo detectado.</li>
+                                <li>Da clic y selecciona "Autorizar mi dispositivo".</li>
+                                <li>Sigue el flujo de la app con los botones morados.</li>
+                                <li>La app te pedirá una foto de tu rostro para validación facial.</li>
+                            </ol>
+                            <p class="font-semibold mb-2">Tips para la foto:</p>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Estar en un ambiente bien iluminado.</li>
+                                <li>No cubrir el rostro con accesorios.</li>
+                                <li>Evitar estar a contraluz.</li>
+                            </ul>
+                        </div>
+                        <button onclick="copyAuthPending()" class="copy-btn mt-3 bg-nu-warning text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors flex items-center space-x-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>Copiar Instrucciones</span>
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- SECTION 2: Motivo y Retención -->
+            <!-- SECTION 2: Motivos -->
             <div class="section-card bg-white rounded-2xl shadow-md p-6 mb-6 slide-in" style="animation-delay: 0.2s">
                 <div class="flex items-center space-x-3 mb-4">
                     <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center text-white font-bold">2</div>
-                    <h3 class="text-xl font-bold text-gray-800">Motivo y Retención</h3>
+                    <h3 class="text-xl font-bold text-gray-800">Motivos</h3>
                     <span id="section2Status" class="ml-auto px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-600">Pendiente</span>
                 </div>
 
-                <div class="bg-nu-gray rounded-xl p-4 mb-4">
-                    <label class="flex items-center space-x-3 cursor-pointer mb-4">
-                        <input type="checkbox" id="checkMotivo" onchange="updateProgress()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
-                        <span class="text-gray-700 font-medium">¿Indagaste el motivo de la cancelación?</span>
-                    </label>
-
-                    <div class="mt-4">
+                <div class="bg-nu-gray rounded-xl p-4">
+                    <h4 class="font-semibold text-gray-700 mb-3">❓ Indagar motivo de cancelación</h4>
+                    <p class="text-sm text-gray-600 mb-4">Preguntamos los motivos por el cual el cliente quiere cancelar.</p>
+                    
+                    <div>
                         <label class="block text-gray-700 font-medium mb-2">Selecciona el motivo:</label>
-                        <select id="motivoSelect" onchange="showRetencion()" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-nu-purple focus:ring-nu-purple">
+                        <select id="motivoSelect" onchange="handleMotivoChange()" class="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-nu-purple focus:ring-nu-purple">
                             <option value="">-- Selecciona un motivo --</option>
                         </select>
+                        <input type="checkbox" id="checkMotivo" class="hidden">
                     </div>
-                </div>
-
-                <!-- Retención Sugerida -->
-                <div id="retencionContainer" class="hidden bg-gradient-to-r from-nu-purple/5 to-nu-purple/10 rounded-xl p-4 border-2 border-nu-purple/30">
-                    <div class="flex items-center space-x-2 mb-3">
-                        <svg class="w-6 h-6 text-nu-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                        </svg>
-                        <h4 class="font-bold text-nu-purple">💡 Argumento de Retención Sugerido</h4>
-                    </div>
-                    <div id="retencionText" class="bg-white rounded-lg p-4 border border-nu-purple/20 text-gray-700 whitespace-pre-wrap"></div>
-                    <button onclick="copyText('retencionText')" class="copy-btn mt-3 bg-nu-purple text-white px-4 py-2 rounded-lg hover:bg-nu-purple-dark transition-colors flex items-center space-x-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                        </svg>
-                        <span>Copiar Texto</span>
-                    </button>
-                    <label class="flex items-center space-x-3 cursor-pointer mt-4">
-                        <input type="checkbox" id="checkRetencion" onchange="updateProgress()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
-                        <span class="text-gray-700">Argumento de retención aplicado</span>
-                    </label>
                 </div>
             </div>
 
-            <!-- SECTION 3: Revisión de Estado (Widgets) -->
-            <div class="section-card bg-white rounded-2xl shadow-md p-6 mb-6 slide-in" style="animation-delay: 0.3s">
+            <!-- SECTION 3: Retención -->
+            <div class="section-card bg-white rounded-2xl shadow-md p-6 mb-6 slide-in" style="animation-delay: 0.25s">
                 <div class="flex items-center space-x-3 mb-4">
                     <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center text-white font-bold">3</div>
-                    <h3 class="text-xl font-bold text-gray-800">Revisión de Estado (Widgets)</h3>
+                    <h3 class="text-xl font-bold text-gray-800">Retención</h3>
                     <span id="section3Status" class="ml-auto px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-600">Pendiente</span>
                 </div>
+
+                <div class="bg-nu-gray rounded-xl p-4">
+                    <p class="text-sm text-gray-600 mb-4">Realizamos retención según el motivo de cancelación (si hay una disponible en el banco de retenciones).</p>
+                    
+                    <!-- Retención Sugerida -->
+                    <div id="retencionContainer" class="hidden bg-gradient-to-r from-nu-purple/5 to-nu-purple/10 rounded-xl p-4 border-2 border-nu-purple/30 mb-4">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <svg class="w-6 h-6 text-nu-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                            </svg>
+                            <h4 class="font-bold text-nu-purple">💡 Argumento de Retención Sugerido</h4>
+                        </div>
+                        <div id="retencionText" class="bg-white rounded-lg p-4 border border-nu-purple/20 text-gray-700 whitespace-pre-wrap"></div>
+                        <button onclick="copyText('retencionText')" class="copy-btn mt-3 bg-nu-purple text-white px-4 py-2 rounded-lg hover:bg-nu-purple-dark transition-colors flex items-center space-x-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>Copiar Texto</span>
+                        </button>
+                    </div>
+
+                    <div id="noRetencionMsg" class="bg-gray-100 rounded-lg p-4 border border-gray-200 text-gray-500 italic mb-4">
+                        Selecciona un motivo en la sección anterior para ver la retención sugerida.
+                    </div>
+
+                    <input type="checkbox" id="checkRetencion" class="hidden">
+                </div>
+            </div>
+
+            <!-- SECTION 5: Validación -->
+            <div class="section-card bg-white rounded-2xl shadow-md p-6 mb-6 slide-in" style="animation-delay: 0.35s">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center text-white font-bold">5</div>
+                    <h3 class="text-xl font-bold text-gray-800">Validación</h3>
+                    <span id="section5Status" class="ml-auto px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-600">Pendiente</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">Confirmar si la cuenta puede o no ser cancelada. Informar al cliente si debe realizar algún pago, transferencia, autorizar aproximación, etc.</p>
 
                 <div class="bg-nu-gray rounded-xl p-4 mb-4">
                     <h4 class="font-semibold text-gray-700 mb-3">📋 Checklist de Verificación (VITAL)</h4>
@@ -338,6 +429,14 @@
                             <label class="flex items-center space-x-3 cursor-pointer">
                                 <input type="checkbox" id="checkTagsCredito" onchange="updateProgress()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
                                 <span class="text-gray-700">Revisar Tags de bloqueo</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input type="checkbox" id="checkPlasticoCredito" onchange="updateProgress()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
+                                <span class="text-gray-700">Tarjeta física (plástico) cancelada</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input type="checkbox" id="checkVirtualCredito" onchange="updateProgress()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
+                                <span class="text-gray-700">Tarjeta(s) virtual(es) cancelada(s)</span>
                             </label>
                             <div id="checkCajitaRespaldoContainer" class="hidden">
                                 <label class="flex items-center space-x-3 cursor-pointer">
@@ -372,6 +471,14 @@
                                 <input type="checkbox" id="checkTagsCuenta" onchange="updateProgress()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
                                 <span class="text-gray-700">Revisar Tags de bloqueo</span>
                             </label>
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input type="checkbox" id="checkPlasticoDebito" onchange="updateProgress()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
+                                <span class="text-gray-700">Tarjeta física débito (plástico) cancelada</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input type="checkbox" id="checkVirtualDebito" onchange="updateProgress()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
+                                <span class="text-gray-700">Tarjeta(s) virtual(es) débito cancelada(s)</span>
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -381,60 +488,69 @@
                     <h4 class="font-semibold text-gray-700 mb-3">⚠️ Procesos Pendientes (Widget Complaints)</h4>
                     <p class="text-sm text-gray-600 mb-3">Cliente no debe tener procesos pendientes en CB, fraud, AML, etc. Validar desde el widget de Complaints.</p>
                     
-                    <label class="flex items-center space-x-3 cursor-pointer mb-4">
-                        <input type="checkbox" id="checkComplaints" onchange="updateProgress()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
-                        <span class="text-gray-700">Sin procesos pendientes en Complaints</span>
-                    </label>
+                    <div class="space-y-3 mb-4">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="radio" name="complaintsStatus" id="complaintsOk" onchange="checkComplaintsStatus(); updateProgress()" class="w-5 h-5 text-nu-purple focus:ring-nu-purple">
+                            <span class="text-nu-success font-medium">✅ Sin procesos pendientes</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="radio" name="complaintsStatus" id="complaintsPending" onchange="checkComplaintsStatus(); updateProgress()" class="w-5 h-5 text-nu-purple focus:ring-nu-purple">
+                            <span class="text-nu-danger font-medium">❌ Tiene contracargos/disputas pendientes</span>
+                        </label>
+                        <input type="checkbox" id="checkComplaints" class="hidden">
+                    </div>
 
-                    <div class="bg-white rounded-lg p-4 border border-gray-200">
-                        <h5 class="font-medium text-gray-700 mb-2">✅ Comentarios con status RESOLVED que permiten cancelar:</h5>
-                        <p class="text-xs text-gray-500 mb-2 italic">Recuerda abrir el complaint para validar el comentario.</p>
-                        <ul class="text-sm text-gray-600 space-y-2">
-                            <li class="flex items-start space-x-2">
-                                <span class="text-nu-success">•</span>
-                                <span><strong>RESOLUTION IN FAVOUR:</strong> El ciclo del contracargo finalizó, el abono temporal queda para el cx.</span>
-                            </li>
-                            <li class="flex items-start space-x-2">
-                                <span class="text-nu-success">•</span>
-                                <span><strong>LOST, LACK OF EVIDENCE:</strong> Decisión interna de Nu, por evidencias básicas, el abono queda para el cliente.</span>
-                            </li>
-                            <li class="flex items-start space-x-2">
-                                <span class="text-nu-success">•</span>
-                                <span><strong>RESOLVED IN CX FAVOUR, MERCHANT REBUTTAL:</strong> A pesar de la refutación, el caso resultó a favor del cliente.</span>
-                            </li>
-                        </ul>
-                        <div class="mt-3 p-2 bg-nu-success/10 rounded border border-nu-success/30">
-                            <p class="text-sm text-nu-success font-medium">💡 Disputas de 2022 o 2023: Se puede continuar con la cancelación sin inconvenientes.</p>
+                    <!-- Alert de contracargos pendientes -->
+                    <div id="complaintsAlert" class="hidden bg-nu-danger/10 border-2 border-nu-danger rounded-lg p-4 mb-4">
+                        <p class="text-nu-danger font-semibold mb-3">⚠️ No se puede cancelar - Informar al cliente:</p>
+                        <div id="complaintsAlertText" class="bg-white rounded-lg p-4 border border-nu-danger/30 text-gray-700 text-sm">
+                            <p>Hemos recibido tu solicitud de cancelación, sin embargo, tienes <strong>disputas/contracargos pendientes</strong> que necesitan resolverse antes de procesar tu solicitud.</p>
+                            <p class="mt-2">El proceso de disputa puede tardar entre <strong>45 y 90 días calendario</strong>. Una vez se resuelva, podrás continuar con la cancelación.</p>
+                            <p class="mt-2">Si deseas <strong>desistir de la disputa</strong> para continuar con la cancelación, puedes indicárnoslo y te ayudaremos a gestionar la solicitud.</p>
                         </div>
+                        <button onclick="copyComplaintsAlert()" class="copy-btn mt-3 bg-nu-danger text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors flex items-center space-x-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>Copiar Mensaje</span>
+                        </button>
+                    </div>
+
+                    <div class="p-2 bg-nu-success/10 rounded border border-nu-success/30">
+                        <p class="text-sm text-nu-success font-medium">💡 Disputas de 2022 o 2023: Se puede continuar con la cancelación sin inconvenientes.</p>
                     </div>
                 </div>
             </div>
 
             <!-- SECTION 4: Beneficios -->
-            <div class="section-card bg-white rounded-2xl shadow-md p-6 mb-6 slide-in" style="animation-delay: 0.35s">
+            <div class="section-card bg-white rounded-2xl shadow-md p-6 mb-6 slide-in" style="animation-delay: 0.3s">
                 <div class="flex items-center space-x-3 mb-4">
-                    <div class="w-10 h-10 bg-nu-success rounded-full flex items-center justify-center text-white font-bold">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800">Beneficios del Producto</h3>
+                    <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center text-white font-bold">4</div>
+                    <h3 class="text-xl font-bold text-gray-800">Beneficios</h3>
+                    <span id="section4Status" class="ml-auto px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-600">Pendiente</span>
                 </div>
+                <p class="text-sm text-gray-600 mb-4">Enviamos los beneficios dependiendo del producto para intentar retener al cliente.</p>
 
-                <div id="beneficiosContainer" class="bg-gradient-to-r from-nu-success/5 to-nu-success/10 rounded-xl p-4 border-2 border-nu-success/30">
+                <div id="beneficiosContainer" class="bg-gradient-to-r from-nu-success/5 to-nu-success/10 rounded-xl p-4 border-2 border-nu-success/30 mb-4">
                     <div id="beneficiosContent" class="text-gray-700">
                         <!-- Se llenará dinámicamente -->
                     </div>
                 </div>
+
+                <label class="flex items-center space-x-3 cursor-pointer">
+                    <input type="checkbox" id="checkBeneficios" onchange="updateProgress()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
+                    <span class="text-gray-700 font-medium">Beneficios informados al cliente</span>
+                </label>
             </div>
 
-            <!-- SECTION 5: Condiciones (Macros) -->
+            <!-- SECTION 6: Condiciones -->
             <div class="section-card bg-white rounded-2xl shadow-md p-6 mb-6 slide-in" style="animation-delay: 0.4s">
                 <div class="flex items-center space-x-3 mb-4">
-                    <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center text-white font-bold">4</div>
-                    <h3 class="text-xl font-bold text-gray-800">Condiciones (Macros)</h3>
-                    <span id="section4Status" class="ml-auto px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-600">Pendiente</span>
+                    <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center text-white font-bold">6</div>
+                    <h3 class="text-xl font-bold text-gray-800">Condiciones</h3>
+                    <span id="section6Status" class="ml-auto px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-600">Pendiente</span>
                 </div>
+                <p class="text-sm text-gray-600 mb-4">Si el cliente desea continuar con la cancelación, indicamos las condiciones.</p>
 
                 <div class="bg-nu-gray rounded-xl p-4 mb-4">
                     <h4 class="font-semibold text-gray-700 mb-3">📝 Texto de Condiciones para el Cliente</h4>
@@ -474,33 +590,165 @@
                 </div>
             </div>
 
-            <!-- SECTION 6: Cierre y Seguimiento -->
+            <!-- SECTION 7: Hard Filter -->
+            <div class="section-card bg-white rounded-2xl shadow-md p-6 mb-6 slide-in" style="animation-delay: 0.45s">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center text-white font-bold">7</div>
+                    <h3 class="text-xl font-bold text-gray-800">Hard Filter</h3>
+                    <span id="section7Status" class="ml-auto px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-600">Pendiente</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">Realizar el Hard Filter al cliente. Selecciona cuál dato validó el cliente:</p>
+
+                <div class="bg-nu-gray rounded-xl p-4">
+                    <h4 class="font-semibold text-gray-700 mb-3">🔐 Selecciona el Hard Filter utilizado:</h4>
+                    <div class="space-y-3">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="radio" name="hardFilterType" id="hfFechaNacimiento" onchange="updateHardFilter()" class="w-5 h-5 text-nu-purple focus:ring-nu-purple">
+                            <span class="text-gray-700 font-medium">📅 Fecha de nacimiento</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="radio" name="hardFilterType" id="hfCorreo" onchange="updateHardFilter()" class="w-5 h-5 text-nu-purple focus:ring-nu-purple">
+                            <span class="text-gray-700 font-medium">📧 Correo electrónico</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="radio" name="hardFilterType" id="hfCelular" onchange="updateHardFilter()" class="w-5 h-5 text-nu-purple focus:ring-nu-purple">
+                            <span class="text-gray-700 font-medium">📱 Número de celular</span>
+                        </label>
+                    </div>
+                    <input type="checkbox" id="checkHardFilter" class="hidden">
+                </div>
+            </div>
+
+            <!-- SECTION 8: Confirmación de Cancelación -->
             <div class="section-card bg-white rounded-2xl shadow-md p-6 mb-6 slide-in" style="animation-delay: 0.5s">
                 <div class="flex items-center space-x-3 mb-4">
-                    <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center text-white font-bold">5</div>
-                    <h3 class="text-xl font-bold text-gray-800">Cierre y Seguimiento</h3>
-                    <span id="section5Status" class="ml-auto px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-600">Pendiente</span>
+                    <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center text-white font-bold">8</div>
+                    <h3 class="text-xl font-bold text-gray-800">Confirmación de Cancelación</h3>
+                    <span id="section8Status" class="ml-auto px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-600">Pendiente</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">Confirmamos al cliente que se ha procesado la cancelación del producto.</p>
+
+                <!-- Macro de confirmación de cancelación -->
+                <div class="bg-nu-gray rounded-xl p-4 mb-4">
+                    <h4 class="font-semibold text-gray-700 mb-3">✅ Confirmar Cancelación al Cliente</h4>
+                    <div id="confirmacionCancelacionCredito" class="hidden">
+                        <div class="bg-white rounded-lg p-4 border border-gray-200 text-gray-700 mb-3">
+                            <p>Listo, tu <strong>Tarjeta de Crédito Nu</strong> ha sido cancelada exitosamente. El proceso de anulación se ha completado.</p>
+                        </div>
+                    </div>
+                    <div id="confirmacionCancelacionNucontrol" class="hidden">
+                        <div class="bg-white rounded-lg p-4 border border-gray-200 text-gray-700 mb-3">
+                            <p>Listo, tu <strong>Tarjeta de Crédito NuControl</strong> ha sido cancelada exitosamente. El proceso de anulación se ha completado.</p>
+                        </div>
+                    </div>
+                    <div id="confirmacionCancelacionAbrecaminos" class="hidden">
+                        <div class="bg-white rounded-lg p-4 border border-gray-200 text-gray-700 mb-3">
+                            <p>Listo, tu <strong>Tarjeta Morada Abre Caminos</strong> ha sido cancelada exitosamente. El proceso de anulación se ha completado.</p>
+                        </div>
+                    </div>
+                    <div id="confirmacionCancelacionCuenta" class="hidden">
+                        <div class="bg-white rounded-lg p-4 border border-gray-200 text-gray-700 mb-3">
+                            <p>Listo, tu <strong>Cuenta de Ahorros Nu</strong> ha sido cancelada exitosamente. El proceso de anulación se ha completado.</p>
+                        </div>
+                    </div>
+                    <div id="confirmacionCancelacionMultiCredito" class="hidden">
+                        <div class="bg-white rounded-lg p-4 border border-gray-200 text-gray-700 mb-3">
+                            <p>Listo, tu <strong>Tarjeta de Crédito Nu</strong> y tu <strong>Cuenta de Ahorros Nu</strong> han sido canceladas exitosamente. El proceso de anulación de ambos productos se ha completado.</p>
+                        </div>
+                    </div>
+                    <div id="confirmacionCancelacionMultiNucontrol" class="hidden">
+                        <div class="bg-white rounded-lg p-4 border border-gray-200 text-gray-700 mb-3">
+                            <p>Listo, tu <strong>Tarjeta de Crédito NuControl</strong> y tu <strong>Cuenta de Ahorros Nu</strong> han sido canceladas exitosamente. El proceso de anulación de ambos productos se ha completado.</p>
+                        </div>
+                    </div>
+                    <div id="confirmacionCancelacionMultiAbrecaminos" class="hidden">
+                        <div class="bg-white rounded-lg p-4 border border-gray-200 text-gray-700 mb-3">
+                            <p>Listo, tu <strong>Tarjeta Morada Abre Caminos</strong> y tu <strong>Cuenta de Ahorros Nu</strong> han sido canceladas exitosamente. El proceso de anulación de ambos productos se ha completado.</p>
+                        </div>
+                    </div>
+                    <button onclick="copyConfirmacionCancelacion()" class="copy-btn bg-nu-purple text-white px-4 py-2 rounded-lg hover:bg-nu-purple-dark transition-colors flex items-center space-x-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>Copiar Confirmación</span>
+                    </button>
+                    <label class="flex items-center space-x-3 cursor-pointer mt-4">
+                        <input type="checkbox" id="checkConfirmacionCancelacion" onchange="updateProgress()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
+                        <span class="text-gray-700">Confirmación de cancelación informada al cliente</span>
+                    </label>
                 </div>
 
-                <!-- Secondary Job Alert -->
-                <div class="bg-nu-purple/10 rounded-xl p-4 mb-4 border-2 border-nu-purple/30">
+                <!-- Aproximación de Saldo - Solo para cuenta y multiproducto -->
+                <div id="aproximacionContainer" class="hidden bg-nu-warning/10 rounded-xl p-4 border-2 border-nu-warning/30">
+                    <h4 class="font-semibold text-nu-warning mb-3">⚠️ Aproximación de Saldo</h4>
+                    <div class="flex items-start space-x-3 mb-4">
+                        <svg class="w-6 h-6 text-nu-warning flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                        </svg>
+                        <div>
+                            <p class="text-gray-700">Si hay saldo <strong>INFERIOR a $0.99</strong>, se debe solicitar autorización para aproximación.</p>
+                            <p class="text-gray-600 text-sm mt-2">⚠️ El valor a ajustar <strong>NO PUEDE ser superior a $0.99</strong>. Revisar en <strong>Boxes</strong> y <strong>Cajitas</strong> para confirmar que no hay saldos.</p>
+                        </div>
+                    </div>
+                    <label class="flex items-center space-x-3 cursor-pointer">
+                        <input type="checkbox" id="checkAproximacion" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
+                        <span class="text-gray-700">N/A o Aproximación solicitada (si aplica)</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- SECTION 9: Case Management -->
+            <div class="section-card bg-white rounded-2xl shadow-md p-6 mb-6 slide-in" style="animation-delay: 0.55s">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center text-white font-bold">9</div>
+                    <h3 class="text-xl font-bold text-gray-800">Case Management</h3>
+                    <span id="section9Status" class="ml-auto px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-600">Pendiente</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">Informar al cliente cómo hacer seguimiento de su caso en la App.</p>
+
+                <!-- Alertas sobre Mis Casos - Por producto -->
+                <div id="misCasosCredito" class="hidden bg-blue-50 rounded-xl p-4 mb-4 border-2 border-blue-200">
                     <div class="flex items-start space-x-3">
-                        <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
+                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-lg">💳</span>
                         </div>
                         <div>
-                            <h4 class="font-bold text-nu-purple">📌 Importante - Casos Escalados (Secondary Job)</h4>
-                            <p class="text-gray-700 mt-1">Para todo caso que sea escalado por <strong>Secondary Job</strong> para que otro agente especializado anule el producto, <strong>DEBE informar la macro de "Mis casos"</strong> al cliente.</p>
+                            <h4 class="font-bold text-blue-700">Obligatorio - Informar "Mis Casos"</h4>
+                            <p class="mt-2 text-gray-700">Es <strong>obligatorio</strong> brindar la información de "Mis casos" para todo escalamiento de cancelación de tarjeta de crédito.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Mensaje de Seguimiento -->
-                <div class="bg-nu-gray rounded-xl p-4 mb-4">
-                    <h4 class="font-semibold text-gray-700 mb-3">📱 Mensaje de Seguimiento (OBLIGATORIO)</h4>
-                    <p class="text-sm text-gray-600 mb-3">Informar al cliente cómo ver el caso en la App:</p>
+                <div id="misCasosCuenta" class="hidden bg-blue-50 rounded-xl p-4 mb-4 border-2 border-blue-200">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-lg">🏦</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-700">Informar "Mis Casos" (si aplica)</h4>
+                            <p class="mt-2 text-gray-700">Es obligatorio brindar la información de "Mis casos" <strong>solo si se realizó solicitud de aproximación</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="misCasosMultiproducto" class="hidden bg-blue-50 rounded-xl p-4 mb-4 border-2 border-blue-200">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <span class="text-white text-lg">📋</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-blue-700">Obligatorio - Informar "Mis Casos"</h4>
+                            <div class="mt-2 space-y-2 text-gray-700">
+                                <p><strong>💳 Tarjeta de Crédito:</strong> Es obligatorio brindar la información de "Mis casos" para todo escalamiento de cancelación.</p>
+                                <p><strong>🏦 Cuenta de Ahorros:</strong> Es obligatorio brindar la información de "Mis casos" <strong>solo si se realizó solicitud de aproximación</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instrucciones de Mis Casos -->
+                <div class="bg-nu-gray rounded-xl p-4">
+                    <h4 class="font-semibold text-gray-700 mb-3">📱 Instrucciones para ver "Mis Casos"</h4>
                     <div id="seguimientoText" class="bg-white rounded-lg p-4 border border-gray-200 text-gray-700">
                         <p class="mb-2"><strong>1.</strong> Abre tu app y selecciona el icono <span class="text-xl">❓</span></p>
                         <p class="mb-2"><strong>2.</strong> Selecciona la campana <span class="text-xl">🔔</span></p>
@@ -515,25 +763,50 @@
                     </button>
                     <label class="flex items-center space-x-3 cursor-pointer mt-4">
                         <input type="checkbox" id="checkSeguimiento" onchange="updateProgress()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
-                        <span class="text-gray-700">Instrucciones de seguimiento informadas</span>
+                        <span class="text-gray-700">Instrucciones de Case Management informadas</span>
                     </label>
                 </div>
+            </div>
 
-                <!-- Aproximación de Saldo -->
-                <div class="bg-nu-warning/10 rounded-xl p-4 border-2 border-nu-warning/30">
-                    <h4 class="font-semibold text-nu-warning mb-3">⚠️ Aproximación de Saldo</h4>
-                    <div class="flex items-start space-x-3 mb-4">
-                        <svg class="w-6 h-6 text-nu-warning flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                        </svg>
-                        <div>
-                            <p class="text-gray-700">Si hay saldo <strong>INFERIOR a $0.99</strong>, se debe solicitar autorización para aproximación.</p>
-                            <p class="text-gray-600 text-sm mt-2">⚠️ El valor a ajustar <strong>NO PUEDE ser superior a $0.99</strong>. Revisar en <strong>Boxes</strong> y <strong>Cajitas</strong> para confirmar que no hay saldos.</p>
-                        </div>
+            <!-- SECTION 10: Finalización de Interacción -->
+            <div class="section-card bg-white rounded-2xl shadow-md p-6 mb-6 slide-in" style="animation-delay: 0.6s">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-nu-purple rounded-full flex items-center justify-center text-white font-bold">10</div>
+                    <h3 class="text-xl font-bold text-gray-800">Finalización de Interacción</h3>
+                    <span id="section10Status" class="ml-auto px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-600">Pendiente</span>
+                </div>
+                <p class="text-sm text-gray-600 mb-4">Promoción de encuesta NPS y despedida.</p>
+
+                <div class="bg-nu-gray rounded-xl p-4">
+                    <h4 class="font-semibold text-gray-700 mb-3">💜 Despedida y Promoción de Encuesta</h4>
+                    <div id="despedidaText" class="bg-white rounded-lg p-4 border border-gray-200 text-gray-700 mb-3">
+                        <p class="mb-3">Fue un gusto ayudarte hoy 💜.</p>
+                        <p class="mb-3">Al terminar nuestra llamada, recibirás una notificación en tu App para contarnos cuánto nos recomendarías en una escala de 0 a 10, siendo 0, nada probable y 10, muy probable.</p>
+                        <p>Un abrazo de parte del Equipo Nu.</p>
                     </div>
-                    <label class="flex items-center space-x-3 cursor-pointer">
-                        <input type="checkbox" id="checkAproximacion" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
-                        <span class="text-gray-700">N/A o Aproximación solicitada (si aplica)</span>
+                    <button onclick="copyDespedida()" class="copy-btn bg-nu-purple text-white px-4 py-2 rounded-lg hover:bg-nu-purple-dark transition-colors flex items-center space-x-2 mb-3">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>Copiar Despedida Completa</span>
+                    </button>
+
+                    <div class="border-t border-gray-200 pt-3 mt-3">
+                        <p class="text-sm text-gray-500 mb-2">Opción alternativa (corta):</p>
+                        <div id="despedidaCortaText" class="bg-white rounded-lg p-3 border border-gray-200 text-gray-700 text-sm">
+                            <p>Gracias por comunicarte con el equipo Nu.</p>
+                        </div>
+                        <button onclick="copyDespedidaCorta()" class="copy-btn mt-2 bg-gray-500 text-white px-3 py-1 rounded-lg hover:bg-gray-600 transition-colors flex items-center space-x-2 text-sm">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>Copiar Alternativa</span>
+                        </button>
+                    </div>
+
+                    <label class="flex items-center space-x-3 cursor-pointer mt-4">
+                        <input type="checkbox" id="checkDespedida" onchange="updateProgress()" class="w-5 h-5 rounded border-2 border-gray-300 text-nu-purple focus:ring-nu-purple">
+                        <span class="text-gray-700">Despedida y promoción de encuesta realizada</span>
                     </label>
                 </div>
             </div>
@@ -581,20 +854,34 @@
             'nucontrol': [
                 { name: 'Cancelación - Tarjeta crédito Nucontrol', url: 'https://nucolombia.myweduka.com/DocumentFind/Document?idDocument=4391&logType=12&idlogSearch=904000' }
             ],
+            'abrecaminos': [
+                { name: 'Cancelación - Tarjeta crédito Nucontrol', url: 'https://nucolombia.myweduka.com/DocumentFind/Document?idDocument=4391&logType=12&idlogSearch=904000' }
+            ],
             'cuenta': [
                 { name: 'AHORROS - Cancelación de Cuenta de Ahorros', url: 'https://nucolombia.myweduka.com/DocumentFind/Document?idDocument=4455&logType=12&idlogSearch=904000' }
             ],
-            'multiproducto': [
+            'multi_credito': [
                 { name: 'Cancelación - Tarjeta débito y cuenta de ahorros', url: 'https://nucolombia.myweduka.com/DocumentFind/Document?idDocument=4389&logType=12&idlogSearch=904000' },
                 { name: 'Cancelación - Tarjeta crédito', url: 'https://nucolombia.myweduka.com/DocumentFind/Document?idDocument=4390&logType=12&idlogSearch=904000' }
+            ],
+            'multi_nucontrol': [
+                { name: 'Cancelación - Tarjeta débito y cuenta de ahorros', url: 'https://nucolombia.myweduka.com/DocumentFind/Document?idDocument=4389&logType=12&idlogSearch=904000' },
+                { name: 'Cancelación - Tarjeta crédito Nucontrol', url: 'https://nucolombia.myweduka.com/DocumentFind/Document?idDocument=4391&logType=12&idlogSearch=904000' }
+            ],
+            'multi_abrecaminos': [
+                { name: 'Cancelación - Tarjeta débito y cuenta de ahorros', url: 'https://nucolombia.myweduka.com/DocumentFind/Document?idDocument=4389&logType=12&idlogSearch=904000' },
+                { name: 'Cancelación - Tarjeta crédito Nucontrol', url: 'https://nucolombia.myweduka.com/DocumentFind/Document?idDocument=4391&logType=12&idlogSearch=904000' }
             ]
         };
 
         const productNames = {
             'credito': 'Tarjeta de Crédito Tradicional',
-            'nucontrol': 'Tarjeta Nu Control / Abre Caminos',
+            'nucontrol': 'Tarjeta de Crédito Nu Control',
+            'abrecaminos': 'Tarjeta Morada Abre Caminos',
             'cuenta': 'Cuenta de Ahorros (Débito)',
-            'multiproducto': 'Multiproducto (Crédito + Débito)'
+            'multi_credito': 'Multiproducto: Crédito Tradicional + Cuenta',
+            'multi_nucontrol': 'Multiproducto: Nu Control + Cuenta',
+            'multi_abrecaminos': 'Multiproducto: Abre Caminos + Cuenta'
         };
 
         const motivos = {
@@ -604,15 +891,24 @@
                 { value: 'capacidad_endeudamiento', label: 'Afecta capacidad de endeudamiento' },
                 { value: 'no_usa', label: 'No la usa / No especifica motivos' },
                 { value: 'mala_experiencia', label: 'Mala experiencia con otros equipos' },
-                { value: 'mala_entrega', label: 'Mala experiencia con la entrega' }
+                { value: 'mala_entrega', label: 'Mala experiencia con la entrega' },
+                { value: 'otro_motivo', label: 'Otro motivo' }
             ],
             'nucontrol': [
                 { value: 'porque_nucontrol', label: '¿Por qué me dieron la NuControl?' },
                 { value: 'pago_total', label: 'Quiere evitar cuota de manejo (Pago total)' },
                 { value: 'minimo_compras', label: 'Quiere evitar cuota de manejo (Mínimo compras)' },
+                { value: 'no_usa', label: 'No la usa / No especifica motivos' },
+                { value: 'mala_experiencia', label: 'Mala experiencia con otros equipos' },
+                { value: 'otro_motivo', label: 'Otro motivo' }
+            ],
+            'abrecaminos': [
+                { value: 'porque_nucontrol', label: '¿Por qué me dieron la Abre Caminos?' },
                 { value: 'sin_limite', label: 'Aún no recibe un límite garantizado por Nu' },
                 { value: 'no_usa', label: 'No la usa / No especifica motivos' },
-                { value: 'mala_experiencia', label: 'Mala experiencia con otros equipos' }
+                { value: 'mala_experiencia', label: 'Mala experiencia con otros equipos' },
+                { value: 'mala_entrega', label: 'Mala experiencia con la entrega' },
+                { value: 'otro_motivo', label: 'Otro motivo' }
             ],
             'cuenta': [
                 { value: 'producto_no_ofertado', label: 'Producto no ofertado (quería crédito)' },
@@ -620,13 +916,29 @@
                 { value: 'tasa_rendimiento', label: 'Disminución tasa de rendimiento' },
                 { value: 'tiene_cdt', label: 'Quiere cancelar pero tiene CDT vigente' },
                 { value: 'mala_experiencia', label: 'Mala experiencia con otros equipos' },
-                { value: 'mala_entrega', label: 'Mala experiencia con la entrega' }
+                { value: 'mala_entrega', label: 'Mala experiencia con la entrega' },
+                { value: 'otro_motivo', label: 'Otro motivo' }
             ],
-            'multiproducto': [
-                { value: 'abre_caminos_cuenta', label: 'Cancelar cuenta (tiene Abre Caminos)' },
+            'multi_credito': [
+                { value: 'no_usa', label: 'No los usa / No especifica motivos' },
+                { value: 'capacidad_endeudamiento', label: 'Afecta capacidad de endeudamiento' },
+                { value: 'mala_experiencia', label: 'Mala experiencia con otros equipos' },
+                { value: 'mala_entrega', label: 'Mala experiencia con la entrega' },
+                { value: 'otro_motivo', label: 'Otro motivo' }
+            ],
+            'multi_nucontrol': [
+                { value: 'porque_nucontrol', label: '¿Por qué me dieron la NuControl?' },
+                { value: 'pago_total', label: 'Quiere evitar cuota de manejo (Pago total)' },
                 { value: 'no_usa', label: 'No los usa / No especifica motivos' },
                 { value: 'mala_experiencia', label: 'Mala experiencia con otros equipos' },
-                { value: 'mala_entrega', label: 'Mala experiencia con la entrega' }
+                { value: 'otro_motivo', label: 'Otro motivo' }
+            ],
+            'multi_abrecaminos': [
+                { value: 'abre_caminos_cuenta', label: 'Cancelar cuenta (tiene Abre Caminos)' },
+                { value: 'sin_limite', label: 'Aún no recibe un límite garantizado por Nu' },
+                { value: 'no_usa', label: 'No los usa / No especifica motivos' },
+                { value: 'mala_experiencia', label: 'Mala experiencia con otros equipos' },
+                { value: 'otro_motivo', label: 'Otro motivo' }
             ]
         };
 
@@ -766,13 +1078,29 @@ En tu Tarjeta Morada Abre Caminos:
         <span class="text-nu-success">✓</span>
         <span>Posibilidad de ajustar el límite de crédito desde la app</span>
     </li>
+</ul>`,
+
+            'nucontrol': `<h4 class="font-bold text-nu-success mb-3">🌟 Beneficios de tu Tarjeta de Crédito NuControl:</h4>
+<ul class="space-y-2">
     <li class="flex items-start space-x-2">
         <span class="text-nu-success">✓</span>
-        <span>Más información: <a href="https://nu.com.co/credito/condiciones/" target="_blank" class="text-nu-purple underline">nu.com.co/credito/condiciones/</a></span>
+        <span>Construye y fortalece tu vida crediticia</span>
+    </li>
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>Posibilidad de exoneración de cuota de manejo cumpliendo condiciones</span>
+    </li>
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>$0 costo por el uso de los beneficios Mastercard Gold</span>
+    </li>
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>Pagos desde Google Pay y Apple Pay</span>
     </li>
 </ul>`,
 
-            'nucontrol': `<h4 class="font-bold text-nu-success mb-3">🌟 Beneficios de tu Tarjeta Morada Abre Caminos:</h4>
+            'abrecaminos': `<h4 class="font-bold text-nu-success mb-3">🌟 Beneficios de tu Tarjeta Morada Abre Caminos:</h4>
 <ul class="space-y-2">
     <li class="flex items-start space-x-2">
         <span class="text-nu-success">✓</span>
@@ -789,10 +1117,6 @@ En tu Tarjeta Morada Abre Caminos:
     <li class="flex items-start space-x-2">
         <span class="text-nu-success">✓</span>
         <span>Pagos desde Google Pay y Apple Pay</span>
-    </li>
-    <li class="flex items-start space-x-2">
-        <span class="text-nu-success">✓</span>
-        <span>Posibilidad de exoneración de cuota de manejo cumpliendo condiciones</span>
     </li>
 </ul>`,
 
@@ -826,13 +1150,9 @@ En tu Tarjeta Morada Abre Caminos:
         <span class="text-nu-success">✓</span>
         <span>1 retiro gratis al mes en cualquier cajero de la red Mastercard</span>
     </li>
-    <li class="flex items-start space-x-2">
-        <span class="text-nu-success">✓</span>
-        <span>Más información: <a href="https://nu.com.co/cf/cuenta-condiciones/" target="_blank" class="text-nu-purple underline">nu.com.co/cf/cuenta-condiciones/</a></span>
-    </li>
 </ul>`,
 
-            'multiproducto': `<h4 class="font-bold text-nu-success mb-3">🌟 Beneficios de tu Cuenta de Ahorros Nu:</h4>
+            'multi_credito': `<h4 class="font-bold text-nu-success mb-3">🌟 Beneficios de tu Cuenta de Ahorros Nu:</h4>
 <ul class="space-y-2 mb-4">
     <li class="flex items-start space-x-2">
         <span class="text-nu-success">✓</span>
@@ -846,16 +1166,8 @@ En tu Tarjeta Morada Abre Caminos:
         <span class="text-nu-success">✓</span>
         <span>Rendimientos diarios que ves crecer día a día</span>
     </li>
-    <li class="flex items-start space-x-2">
-        <span class="text-nu-success">✓</span>
-        <span>Transferencias gratuitas, inmediatas e ilimitadas</span>
-    </li>
-    <li class="flex items-start space-x-2">
-        <span class="text-nu-success">✓</span>
-        <span>1 retiro gratis al mes en cajeros Mastercard</span>
-    </li>
 </ul>
-<h4 class="font-bold text-nu-success mb-3">🌟 Beneficios de tu Tarjeta de Crédito Nu:</h4>
+<h4 class="font-bold text-nu-success mb-3">🌟 Beneficios de tu Tarjeta de Crédito Tradicional:</h4>
 <ul class="space-y-2">
     <li class="flex items-start space-x-2">
         <span class="text-nu-success">✓</span>
@@ -869,13 +1181,73 @@ En tu Tarjeta Morada Abre Caminos:
         <span class="text-nu-success">✓</span>
         <span>Flexibilidad financiera para emergencias</span>
     </li>
+</ul>`,
+
+            'multi_nucontrol': `<h4 class="font-bold text-nu-success mb-3">🌟 Beneficios de tu Cuenta de Ahorros Nu:</h4>
+<ul class="space-y-2 mb-4">
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>$0 cuota de manejo ni anualidades</span>
+    </li>
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>Cajitas de ahorro con una de las tasas más competitivas del mercado</span>
+    </li>
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>Rendimientos diarios que ves crecer día a día</span>
+    </li>
+</ul>
+<h4 class="font-bold text-nu-success mb-3">🌟 Beneficios de tu Tarjeta NuControl:</h4>
+<ul class="space-y-2">
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>Construye y fortalece tu vida crediticia</span>
+    </li>
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>Posibilidad de exoneración de cuota de manejo</span>
+    </li>
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>$0 costo por beneficios Mastercard Gold</span>
+    </li>
+</ul>`,
+
+            'multi_abrecaminos': `<h4 class="font-bold text-nu-success mb-3">🌟 Beneficios de tu Cuenta de Ahorros Nu:</h4>
+<ul class="space-y-2 mb-4">
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>$0 cuota de manejo ni anualidades</span>
+    </li>
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>Cajitas de ahorro con una de las tasas más competitivas del mercado</span>
+    </li>
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>Rendimientos diarios que ves crecer día a día</span>
+    </li>
+</ul>
+<h4 class="font-bold text-nu-success mb-3">🌟 Beneficios de tu Tarjeta Morada Abre Caminos:</h4>
+<ul class="space-y-2">
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>0% interés en compras a una cuota</span>
+    </li>
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>Impulsa tu historial de crédito</span>
+    </li>
+    <li class="flex items-start space-x-2">
+        <span class="text-nu-success">✓</span>
+        <span>$0 costo por beneficios Mastercard Gold</span>
+    </li>
 </ul>`
         };
 
         const condiciones = {
-            'credito': `Comprendo. Si deseas conocer más beneficios de la tarjeta Crédito puedes ingresar a este link: https://nu.com.co/credito/condiciones/
-
-Si prefieres continuar con la cancelación, por favor ten en cuenta estas condiciones:
+            'credito': `Si prefieres continuar con la cancelación, por favor ten en cuenta estas condiciones:
 
 - La cancelación es irreversible; no podrás solicitar la tarjeta de nuevo con las mismas condiciones.
 - Debes pagar todos los cargos pendientes por intereses de compras a cuotas, antes de cancelar.
@@ -883,21 +1255,15 @@ Si prefieres continuar con la cancelación, por favor ten en cuenta estas condic
 
 ¿Estás de acuerdo con las condiciones de cancelación para tu tarjeta de crédito?`,
 
-            'nucontrol': `Entiendo que desees proceder con la cancelación, aunque me encantaría que siguieras con nosotros. Ahora te ayudaré a gestionar este proceso de la manera más rápida posible.
+            'nucontrol': `Si prefieres continuar con la cancelación, por favor ten en cuenta estas condiciones:
 
-Antes de continuar, quiero recordarte los beneficios que obtienes al ser parte de Nu.
+- La cancelación es irreversible; no podrás solicitar la tarjeta de nuevo con las mismas condiciones.
+- Debes pagar todos los cargos pendientes por intereses de compras a cuotas, antes de cancelar.
+- Si tienes un contracargo pendiente, debemos esperar a su resolución.
 
-En tu Tarjeta Morada Abre Caminos:
-→ 0% interés en compras que hayas hecho a una cuota.
-→ Impulsar tu historial de crédito, lo que ayudará aumentar la probabilidad de un límite de crédito de Nu
-→ $0 costo por el uso de los beneficios Mastercard Gold.
-→ Pagos desde Google Pay y Apple Pay.
+¿Estás de acuerdo con las condiciones de cancelación para tu tarjeta de crédito NuControl?`,
 
-¿Estás seguro/a de que deseas continuar con la cancelación o te gustaría continuar con tu Tarjeta Morada de Crédito Abre Caminos?
-
----
-
-Si prefieres continuar con la cancelación de tu Tarjeta Morada Abre Caminos Nu, por favor ten en cuenta estas condiciones:
+            'abrecaminos': `Si prefieres continuar con la cancelación de tu Tarjeta Morada Abre Caminos Nu, por favor ten en cuenta estas condiciones:
 
 - La cancelación es irreversible; no podrás solicitar la tarjeta de nuevo con las mismas condiciones.
 - Debes pagar todos los cargos pendientes por intereses de compras a cuotas, antes de cancelar.
@@ -905,9 +1271,7 @@ Si prefieres continuar con la cancelación de tu Tarjeta Morada Abre Caminos Nu,
 
 ¿Estás de acuerdo con las condiciones de cancelación para tu Tarjeta Morada Abre Caminos Nu?`,
 
-            'cuenta': `Comprendo. Si deseas conocer más beneficios de tu Cuenta de Ahorros puedes ingresar a este link: https://nu.com.co/cf/cuenta-condiciones/
-
-Si prefieres continuar con la cancelación, por favor ten en cuenta estas condiciones:
+            'cuenta': `Si prefieres continuar con la cancelación, por favor ten en cuenta estas condiciones:
 
 - Verificaremos cuenta en $0,00: es decir que no haya movimientos pendientes ni dinero en tus cajitas.
 - Tras la cancelación no podrás enviar/recibir transferencias ni generar rendimientos.
@@ -917,11 +1281,7 @@ Si prefieres continuar con la cancelación, por favor ten en cuenta estas condic
 
 ¿Estás de acuerdo con las condiciones de cancelación para tu cuenta de ahorros?`,
 
-            'multiproducto': `📌 CONDICIONES PARA CUENTA DE AHORROS:
-
-Comprendo. Si deseas conocer más beneficios de tu Cuenta de Ahorros puedes ingresar a este link: https://nu.com.co/cf/cuenta-condiciones/
-
-Si prefieres continuar con la cancelación, por favor ten en cuenta estas condiciones:
+            'multi_credito': `📌 CONDICIONES PARA CUENTA DE AHORROS:
 
 - Verificaremos cuenta en $0,00: es decir que no haya movimientos pendientes ni dinero en tus cajitas.
 - Tras la cancelación no podrás enviar/recibir transferencias ni generar rendimientos.
@@ -931,11 +1291,43 @@ Si prefieres continuar con la cancelación, por favor ten en cuenta estas condic
 
 ---
 
-📌 CONDICIONES PARA TARJETA DE CRÉDITO:
+📌 CONDICIONES PARA TARJETA DE CRÉDITO TRADICIONAL:
 
-Si deseas conocer más beneficios de la tarjeta Crédito puedes ingresar a este link: https://nu.com.co/credito/condiciones/
+- La cancelación es irreversible; no podrás solicitar la tarjeta de nuevo con las mismas condiciones.
+- Debes pagar todos los cargos pendientes por intereses de compras a cuotas, antes de cancelar.
+- Si tienes un contracargo pendiente, debemos esperar a su resolución.
 
-Si prefieres continuar con la cancelación, por favor ten en cuenta estas condiciones:
+¿Estás de acuerdo con las condiciones de cancelación para ambos productos?`,
+
+            'multi_nucontrol': `📌 CONDICIONES PARA CUENTA DE AHORROS:
+
+- Verificaremos cuenta en $0,00: es decir que no haya movimientos pendientes ni dinero en tus cajitas.
+- Tras la cancelación no podrás enviar/recibir transferencias ni generar rendimientos.
+- Finalizando, tus tarjetas débito Nu no podrán usarse.
+- Podrás reactivar la cuenta registrándote de nuevo en la app.
+- Si tienes un contracargo pendiente, debemos esperar a su resolución.
+
+---
+
+📌 CONDICIONES PARA TARJETA DE CRÉDITO NUCONTROL:
+
+- La cancelación es irreversible; no podrás solicitar la tarjeta de nuevo con las mismas condiciones.
+- Debes pagar todos los cargos pendientes por intereses de compras a cuotas, antes de cancelar.
+- Si tienes un contracargo pendiente, debemos esperar a su resolución.
+
+¿Estás de acuerdo con las condiciones de cancelación para ambos productos?`,
+
+            'multi_abrecaminos': `📌 CONDICIONES PARA CUENTA DE AHORROS:
+
+- Verificaremos cuenta en $0,00: es decir que no haya movimientos pendientes ni dinero en tus cajitas.
+- Tras la cancelación no podrás enviar/recibir transferencias ni generar rendimientos.
+- Finalizando, tus tarjetas débito Nu no podrán usarse.
+- Podrás reactivar la cuenta registrándote de nuevo en la app.
+- Si tienes un contracargo pendiente, debemos esperar a su resolución.
+
+---
+
+📌 CONDICIONES PARA TARJETA MORADA ABRE CAMINOS:
 
 - La cancelación es irreversible; no podrás solicitar la tarjeta de nuevo con las mismas condiciones.
 - Debes pagar todos los cargos pendientes por intereses de compras a cuotas, antes de cancelar.
@@ -952,6 +1344,9 @@ Si prefieres continuar con la cancelación, por favor ten en cuenta estas condic
             document.getElementById('progressContainer').classList.remove('hidden');
             document.getElementById('selectedProductName').textContent = productNames[product];
             
+            // Ocultar selector de multiproducto si estaba visible
+            document.getElementById('multiproductoOptions').classList.add('hidden');
+            
             // Show Weduka links
             const linksContainer = document.getElementById('wedukaLinksContainer');
             linksContainer.innerHTML = '';
@@ -964,8 +1359,8 @@ Si prefieres continuar con la cancelación, por favor ten en cuenta estas condic
                 linksContainer.appendChild(a);
             });
 
-            // Show alert for cuenta and multiproducto about Abre Caminos
-            if (product === 'cuenta' || product === 'multiproducto') {
+            // Show alert for cuenta and multi_abrecaminos about Abre Caminos
+            if (product === 'cuenta' || product === 'multi_abrecaminos') {
                 document.getElementById('abreCaminosAlert').classList.remove('hidden');
             }
 
@@ -980,14 +1375,17 @@ Si prefieres continuar con la cancelación, por favor ten en cuenta estas condic
             checkCajitaRespaldoContainer.classList.add('hidden');
 
             // Mostrar según producto
-            if (product === 'credito') {
+            if (product === 'credito' || product === 'nucontrol') {
                 checksCreditoContainer.classList.remove('hidden');
-            } else if (product === 'nucontrol') {
+            } else if (product === 'abrecaminos') {
                 checksCreditoContainer.classList.remove('hidden');
                 checkCajitaRespaldoContainer.classList.remove('hidden');
             } else if (product === 'cuenta') {
                 checksCuentaContainer.classList.remove('hidden');
-            } else if (product === 'multiproducto') {
+            } else if (product === 'multi_credito' || product === 'multi_nucontrol') {
+                checksCreditoContainer.classList.remove('hidden');
+                checksCuentaContainer.classList.remove('hidden');
+            } else if (product === 'multi_abrecaminos') {
                 checksCreditoContainer.classList.remove('hidden');
                 checksCuentaContainer.classList.remove('hidden');
                 checkCajitaRespaldoContainer.classList.remove('hidden');
@@ -1009,6 +1407,48 @@ Si prefieres continuar con la cancelación, por favor ten en cuenta estas condic
             // Set condiciones
             document.getElementById('condicionesText').textContent = condiciones[product];
 
+            // Mostrar mensaje de Mis Casos según producto
+            document.getElementById('misCasosCredito').classList.add('hidden');
+            document.getElementById('misCasosCuenta').classList.add('hidden');
+            document.getElementById('misCasosMultiproducto').classList.add('hidden');
+
+            if (product === 'credito' || product === 'nucontrol' || product === 'abrecaminos') {
+                document.getElementById('misCasosCredito').classList.remove('hidden');
+            } else if (product === 'cuenta') {
+                document.getElementById('misCasosCuenta').classList.remove('hidden');
+            } else if (product === 'multi_credito' || product === 'multi_nucontrol' || product === 'multi_abrecaminos') {
+                document.getElementById('misCasosMultiproducto').classList.remove('hidden');
+            }
+
+            // Mostrar confirmación de cancelación según producto
+            document.getElementById('confirmacionCancelacionCredito').classList.add('hidden');
+            document.getElementById('confirmacionCancelacionCuenta').classList.add('hidden');
+            document.getElementById('confirmacionCancelacionMulti').classList.add('hidden');
+
+            if (product === 'credito') {
+                document.getElementById('confirmacionCancelacionCredito').classList.remove('hidden');
+            } else if (product === 'nucontrol') {
+                document.getElementById('confirmacionCancelacionNucontrol').classList.remove('hidden');
+            } else if (product === 'abrecaminos') {
+                document.getElementById('confirmacionCancelacionAbrecaminos').classList.remove('hidden');
+            } else if (product === 'cuenta') {
+                document.getElementById('confirmacionCancelacionCuenta').classList.remove('hidden');
+            } else if (product === 'multi_credito') {
+                document.getElementById('confirmacionCancelacionMultiCredito').classList.remove('hidden');
+            } else if (product === 'multi_nucontrol') {
+                document.getElementById('confirmacionCancelacionMultiNucontrol').classList.remove('hidden');
+            } else if (product === 'multi_abrecaminos') {
+                document.getElementById('confirmacionCancelacionMultiAbrecaminos').classList.remove('hidden');
+            }
+
+            // Mostrar aproximación solo para cuenta y multiproductos
+            const aproximacionContainer = document.getElementById('aproximacionContainer');
+            if (product === 'cuenta' || product === 'multi_credito' || product === 'multi_nucontrol' || product === 'multi_abrecaminos') {
+                aproximacionContainer.classList.remove('hidden');
+            } else {
+                aproximacionContainer.classList.add('hidden');
+            }
+
             updateProgress();
         }
 
@@ -1022,14 +1462,54 @@ Si prefieres continuar con la cancelación, por favor ten en cuenta estas condic
             document.getElementById('checksCreditoContainer').classList.add('hidden');
             document.getElementById('checksCuentaContainer').classList.add('hidden');
             
-            // Reset all checkboxes
+            // Reset all checkboxes and radios
             document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
             document.querySelectorAll('input[type="radio"]').forEach(rb => rb.checked = false);
             document.getElementById('motivoSelect').value = '';
             document.getElementById('retencionContainer').classList.add('hidden');
-            document.getElementById('hardFilterAlert').classList.add('hidden');
-            document.getElementById('deviceAlert').classList.add('hidden');
             document.getElementById('completionMessage').classList.add('hidden');
+            
+            // Ocultar alertas de dispositivo
+            const alertUntrusted = document.getElementById('deviceAlertUntrusted');
+            const alertPending = document.getElementById('deviceAlertPending');
+            if (alertUntrusted) alertUntrusted.classList.add('hidden');
+            if (alertPending) alertPending.classList.add('hidden');
+            
+            // Ocultar alerta de complaints
+            const complaintsAlert = document.getElementById('complaintsAlert');
+            if (complaintsAlert) complaintsAlert.classList.add('hidden');
+            
+            // Ocultar mensajes de Mis Casos
+            document.getElementById('misCasosCredito').classList.add('hidden');
+            document.getElementById('misCasosCuenta').classList.add('hidden');
+            document.getElementById('misCasosMultiproducto').classList.add('hidden');
+            
+            const noRetencionMsg = document.getElementById('noRetencionMsg');
+            if (noRetencionMsg) noRetencionMsg.classList.remove('hidden');
+            
+            // Reset section statuses
+            for (let i = 1; i <= 10; i++) {
+                const status = document.getElementById('section' + i + 'Status');
+                if (status) {
+                    status.className = 'ml-auto px-3 py-1 rounded-full text-sm font-medium bg-gray-200 text-gray-600';
+                    status.textContent = 'Pendiente';
+                }
+            }
+
+            // Ocultar confirmaciones de cancelación
+            document.getElementById('confirmacionCancelacionCredito').classList.add('hidden');
+            document.getElementById('confirmacionCancelacionNucontrol').classList.add('hidden');
+            document.getElementById('confirmacionCancelacionAbrecaminos').classList.add('hidden');
+            document.getElementById('confirmacionCancelacionCuenta').classList.add('hidden');
+            document.getElementById('confirmacionCancelacionMultiCredito').classList.add('hidden');
+            document.getElementById('confirmacionCancelacionMultiNucontrol').classList.add('hidden');
+            document.getElementById('confirmacionCancelacionMultiAbrecaminos').classList.add('hidden');
+            
+            // Ocultar selector de multiproducto
+            document.getElementById('multiproductoOptions').classList.add('hidden');
+
+            // Ocultar aproximación
+            document.getElementById('aproximacionContainer').classList.add('hidden');
             
             const btn = document.getElementById('finalizarBtn');
             btn.disabled = true;
@@ -1038,60 +1518,126 @@ Si prefieres continuar con la cancelación, por favor ten en cuenta estas condic
             btn.classList.remove('hidden');
         }
 
+        function handleMotivoChange() {
+            const motivo = document.getElementById('motivoSelect').value;
+            
+            // Marcar automáticamente que se indagó el motivo
+            if (motivo) {
+                document.getElementById('checkMotivo').checked = true;
+            } else {
+                document.getElementById('checkMotivo').checked = false;
+            }
+            
+            showRetencion();
+            updateProgress();
+        }
+
         function showRetencion() {
             const motivo = document.getElementById('motivoSelect').value;
             const container = document.getElementById('retencionContainer');
             const text = document.getElementById('retencionText');
+            const noRetencionMsg = document.getElementById('noRetencionMsg');
+            const retencionTitle = document.querySelector('#retencionContainer h4');
+            const checkRetencion = document.getElementById('checkRetencion');
             
-            if (motivo && retenciones[motivo]) {
+            if (motivo === 'otro_motivo') {
+                // Para "Otro motivo" mostrar beneficios en vez de retención
+                if (retencionTitle) retencionTitle.innerHTML = '🌟 Beneficios del producto (no hay retención específica)';
+                text.textContent = 'Para este motivo no hay una retención específica. Continúa con los beneficios del producto en la sección 4.';
+                container.classList.remove('hidden');
+                if (noRetencionMsg) noRetencionMsg.classList.add('hidden');
+                checkRetencion.checked = true; // Marca automáticamente
+            } else if (motivo && retenciones[motivo]) {
+                if (retencionTitle) retencionTitle.innerHTML = '💡 Argumento de Retención Sugerido';
                 text.textContent = retenciones[motivo];
                 container.classList.remove('hidden');
+                if (noRetencionMsg) noRetencionMsg.classList.add('hidden');
+                checkRetencion.checked = true; // Marca automáticamente
             } else {
                 container.classList.add('hidden');
-            }
-        }
-
-        function validateHardFilters() {
-            const hf1 = document.getElementById('checkHardFilter1').checked;
-            const hf2 = document.getElementById('checkHardFilter2').checked;
-            const alert = document.getElementById('hardFilterAlert');
-            
-            if ((hf1 && !hf2) || (!hf1 && hf2)) {
-                alert.classList.remove('hidden');
-            } else {
-                alert.classList.add('hidden');
+                if (noRetencionMsg) noRetencionMsg.classList.remove('hidden');
+                checkRetencion.checked = false;
             }
         }
 
         function checkDeviceStatus() {
             const untrusted = document.getElementById('deviceUntrusted').checked;
-            const alert = document.getElementById('deviceAlert');
+            const pending = document.getElementById('devicePending').checked;
+            const alertUntrusted = document.getElementById('deviceAlertUntrusted');
+            const alertPending = document.getElementById('deviceAlertPending');
+            
+            // Ocultar ambos primero
+            alertUntrusted.classList.add('hidden');
+            alertPending.classList.add('hidden');
             
             if (untrusted) {
-                alert.classList.remove('hidden');
-            } else {
-                alert.classList.add('hidden');
+                alertUntrusted.classList.remove('hidden');
+            } else if (pending) {
+                alertPending.classList.remove('hidden');
             }
         }
 
+        function checkComplaintsStatus() {
+            const ok = document.getElementById('complaintsOk').checked;
+            const pending = document.getElementById('complaintsPending').checked;
+            const alert = document.getElementById('complaintsAlert');
+            const checkComplaints = document.getElementById('checkComplaints');
+            
+            if (ok) {
+                checkComplaints.checked = true;
+                alert.classList.add('hidden');
+            } else if (pending) {
+                checkComplaints.checked = false;
+                alert.classList.remove('hidden');
+            }
+        }
+
+        function updateHardFilter() {
+            const fechaNac = document.getElementById('hfFechaNacimiento').checked;
+            const correo = document.getElementById('hfCorreo').checked;
+            const celular = document.getElementById('hfCelular').checked;
+            const checkHardFilter = document.getElementById('checkHardFilter');
+            
+            if (fechaNac || correo || celular) {
+                checkHardFilter.checked = true;
+            } else {
+                checkHardFilter.checked = false;
+            }
+            updateProgress();
+        }
+
+        function copyComplaintsAlert() {
+            const text = `Hemos recibido tu solicitud de cancelación, sin embargo, tienes disputas/contracargos pendientes que necesitan resolverse antes de procesar tu solicitud.
+
+El proceso de disputa puede tardar entre 45 y 90 días calendario. Una vez se resuelva, podrás continuar con la cancelación.
+
+Si deseas desistir de la disputa para continuar con la cancelación, puedes indicárnoslo y te ayudaremos a gestionar la solicitud.`;
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Mensaje copiado');
+            });
+        }
+
         function updateProgress() {
-            // Checks base que siempre aplican
+            // Checks base que siempre aplican (nuevo orden)
             const checks = [
-                'checkSaludo', 'checkHardFilter1', 'checkHardFilter2', 'checkMotivo',
-                'checkComplaints', 'checkCondiciones', 'checkAceptacion', 'checkSeguimiento'
+                'checkMotivo', 'checkRetencion', 'checkBeneficios',
+                'checkComplaints', 'checkCondiciones', 'checkAceptacion', 
+                'checkHardFilter', 'checkConfirmacionCancelacion', 'checkSeguimiento', 'checkDespedida'
             ];
             
-            // Checks específicos según producto
-            if (selectedProduct === 'credito') {
-                checks.push('checkDeuda', 'checkContracargoCredito', 'checkTagsCredito');
-            } else if (selectedProduct === 'nucontrol') {
-                checks.push('checkDeuda', 'checkContracargoCredito', 'checkTagsCredito', 'checkCajitaRespaldo');
+            // Checks específicos según producto (Validación - Sección 5)
+            if (selectedProduct === 'credito' || selectedProduct === 'nucontrol') {
+                checks.push('checkDeuda', 'checkContracargoCredito', 'checkTagsCredito', 'checkPlasticoCredito', 'checkVirtualCredito');
+            } else if (selectedProduct === 'abrecaminos') {
+                checks.push('checkDeuda', 'checkContracargoCredito', 'checkTagsCredito', 'checkPlasticoCredito', 'checkVirtualCredito', 'checkCajitaRespaldo');
             } else if (selectedProduct === 'cuenta') {
-                checks.push('checkSaldo', 'checkCDT', 'checkSaldoFavor', 'checkContracargoCuenta', 'checkTagsCuenta');
-            } else if (selectedProduct === 'multiproducto') {
-                // Todos los checks de crédito y cuenta
-                checks.push('checkDeuda', 'checkContracargoCredito', 'checkTagsCredito', 'checkCajitaRespaldo');
-                checks.push('checkSaldo', 'checkCDT', 'checkSaldoFavor', 'checkContracargoCuenta', 'checkTagsCuenta');
+                checks.push('checkSaldo', 'checkCDT', 'checkSaldoFavor', 'checkContracargoCuenta', 'checkTagsCuenta', 'checkPlasticoDebito', 'checkVirtualDebito');
+            } else if (selectedProduct === 'multi_credito' || selectedProduct === 'multi_nucontrol') {
+                checks.push('checkDeuda', 'checkContracargoCredito', 'checkTagsCredito', 'checkPlasticoCredito', 'checkVirtualCredito');
+                checks.push('checkSaldo', 'checkCDT', 'checkSaldoFavor', 'checkContracargoCuenta', 'checkTagsCuenta', 'checkPlasticoDebito', 'checkVirtualDebito');
+            } else if (selectedProduct === 'multi_abrecaminos') {
+                checks.push('checkDeuda', 'checkContracargoCredito', 'checkTagsCredito', 'checkPlasticoCredito', 'checkVirtualCredito', 'checkCajitaRespaldo');
+                checks.push('checkSaldo', 'checkCDT', 'checkSaldoFavor', 'checkContracargoCuenta', 'checkTagsCuenta', 'checkPlasticoDebito', 'checkVirtualDebito');
             }
 
             // Check for device trusted
@@ -1111,30 +1657,47 @@ Si prefieres continuar con la cancelación, por favor ten en cuenta estas condic
             document.getElementById('progressBar').style.width = percentage + '%';
             document.getElementById('progressText').textContent = percentage + '%';
 
-            // Update section statuses
-            updateSectionStatus('section1Status', ['checkSaludo', 'checkHardFilter1', 'checkHardFilter2'], deviceTrusted);
+            // Update section statuses (nuevo orden)
+            // Sección 1: Dispositivo
+            updateSectionStatus('section1Status', [], deviceTrusted);
+            // Sección 2: Motivos
             updateSectionStatus('section2Status', ['checkMotivo']);
+            // Sección 3: Retención
+            updateSectionStatus('section3Status', ['checkRetencion']);
+            // Sección 4: Beneficios
+            updateSectionStatus('section4Status', ['checkBeneficios']);
             
-            // Section 3 checks según producto
-            let section3Checks = ['checkComplaints'];
-            if (selectedProduct === 'credito') {
-                section3Checks = section3Checks.concat(['checkDeuda', 'checkContracargoCredito', 'checkTagsCredito']);
-            } else if (selectedProduct === 'nucontrol') {
-                section3Checks = section3Checks.concat(['checkDeuda', 'checkContracargoCredito', 'checkTagsCredito', 'checkCajitaRespaldo']);
+            // Sección 5: Validación - checks según producto
+            let section5Checks = ['checkComplaints'];
+            if (selectedProduct === 'credito' || selectedProduct === 'nucontrol') {
+                section5Checks = section5Checks.concat(['checkDeuda', 'checkContracargoCredito', 'checkTagsCredito', 'checkPlasticoCredito', 'checkVirtualCredito']);
+            } else if (selectedProduct === 'abrecaminos') {
+                section5Checks = section5Checks.concat(['checkDeuda', 'checkContracargoCredito', 'checkTagsCredito', 'checkPlasticoCredito', 'checkVirtualCredito', 'checkCajitaRespaldo']);
             } else if (selectedProduct === 'cuenta') {
-                section3Checks = section3Checks.concat(['checkSaldo', 'checkCDT', 'checkSaldoFavor', 'checkContracargoCuenta', 'checkTagsCuenta']);
-            } else if (selectedProduct === 'multiproducto') {
-                section3Checks = section3Checks.concat(['checkDeuda', 'checkContracargoCredito', 'checkTagsCredito', 'checkCajitaRespaldo']);
-                section3Checks = section3Checks.concat(['checkSaldo', 'checkCDT', 'checkSaldoFavor', 'checkContracargoCuenta', 'checkTagsCuenta']);
+                section5Checks = section5Checks.concat(['checkSaldo', 'checkCDT', 'checkSaldoFavor', 'checkContracargoCuenta', 'checkTagsCuenta', 'checkPlasticoDebito', 'checkVirtualDebito']);
+            } else if (selectedProduct === 'multi_credito' || selectedProduct === 'multi_nucontrol') {
+                section5Checks = section5Checks.concat(['checkDeuda', 'checkContracargoCredito', 'checkTagsCredito', 'checkPlasticoCredito', 'checkVirtualCredito']);
+                section5Checks = section5Checks.concat(['checkSaldo', 'checkCDT', 'checkSaldoFavor', 'checkContracargoCuenta', 'checkTagsCuenta', 'checkPlasticoDebito', 'checkVirtualDebito']);
+            } else if (selectedProduct === 'multi_abrecaminos') {
+                section5Checks = section5Checks.concat(['checkDeuda', 'checkContracargoCredito', 'checkTagsCredito', 'checkPlasticoCredito', 'checkVirtualCredito', 'checkCajitaRespaldo']);
+                section5Checks = section5Checks.concat(['checkSaldo', 'checkCDT', 'checkSaldoFavor', 'checkContracargoCuenta', 'checkTagsCuenta', 'checkPlasticoDebito', 'checkVirtualDebito']);
             }
-            updateSectionStatus('section3Status', section3Checks);
-            updateSectionStatus('section4Status', ['checkCondiciones', 'checkAceptacion']);
-            updateSectionStatus('section5Status', ['checkSeguimiento']);
+            updateSectionStatus('section5Status', section5Checks);
+            
+            // Sección 6: Condiciones
+            updateSectionStatus('section6Status', ['checkCondiciones', 'checkAceptacion']);
+            // Sección 7: Hard Filter
+            updateSectionStatus('section7Status', ['checkHardFilter']);
+            // Sección 8: Confirmación de Cancelación
+            updateSectionStatus('section8Status', ['checkConfirmacionCancelacion']);
+            // Sección 9: Case Management
+            updateSectionStatus('section9Status', ['checkSeguimiento']);
+            // Sección 10: Finalización
+            updateSectionStatus('section10Status', ['checkDespedida']);
 
             // Enable/disable final button
-            const hardFilter1 = document.getElementById('checkHardFilter1').checked;
-            const hardFilter2 = document.getElementById('checkHardFilter2').checked;
-            const allComplete = percentage === 100 && hardFilter1 && hardFilter2 && deviceTrusted;
+            const hardFilter = document.getElementById('checkHardFilter').checked;
+            const allComplete = percentage === 100 && hardFilter && deviceTrusted;
             const btn = document.getElementById('finalizarBtn');
             
             if (allComplete) {
@@ -1181,6 +1744,99 @@ Si prefieres continuar con la cancelación, por favor ten en cuenta estas condic
 Allí podrás ver el estado de tu solicitud.`;
             navigator.clipboard.writeText(text).then(() => {
                 showToast('Instrucciones copiadas al portapapeles');
+            });
+        }
+
+        function copyConfirmacionCancelacion() {
+            let text = '';
+            if (selectedProduct === 'credito') {
+                text = 'Listo, tu Tarjeta de Crédito Nu ha sido cancelada exitosamente. El proceso de anulación se ha completado.';
+            } else if (selectedProduct === 'nucontrol') {
+                text = 'Listo, tu Tarjeta de Crédito NuControl ha sido cancelada exitosamente. El proceso de anulación se ha completado.';
+            } else if (selectedProduct === 'abrecaminos') {
+                text = 'Listo, tu Tarjeta Morada Abre Caminos ha sido cancelada exitosamente. El proceso de anulación se ha completado.';
+            } else if (selectedProduct === 'cuenta') {
+                text = 'Listo, tu Cuenta de Ahorros Nu ha sido cancelada exitosamente. El proceso de anulación se ha completado.';
+            } else if (selectedProduct === 'multi_credito') {
+                text = 'Listo, tu Tarjeta de Crédito Nu y tu Cuenta de Ahorros Nu han sido canceladas exitosamente. El proceso de anulación de ambos productos se ha completado.';
+            } else if (selectedProduct === 'multi_nucontrol') {
+                text = 'Listo, tu Tarjeta de Crédito NuControl y tu Cuenta de Ahorros Nu han sido canceladas exitosamente. El proceso de anulación de ambos productos se ha completado.';
+            } else if (selectedProduct === 'multi_abrecaminos') {
+                text = 'Listo, tu Tarjeta Morada Abre Caminos y tu Cuenta de Ahorros Nu han sido canceladas exitosamente. El proceso de anulación de ambos productos se ha completado.';
+            }
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Confirmación copiada');
+            });
+        }
+
+        function copyDespedida() {
+            const text = `Fue un gusto ayudarte hoy 💜.
+
+Al terminar nuestra llamada, recibirás una notificación en tu App para contarnos cuánto nos recomendarías en una escala de 0 a 10, siendo 0, nada probable y 10, muy probable.
+
+Un abrazo de parte del Equipo Nu.`;
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Despedida copiada');
+            });
+        }
+
+        function copyDespedidaCorta() {
+            const text = 'Gracias por comunicarte con el equipo Nu.';
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Despedida copiada');
+            });
+        }
+
+        function showMultiproductoOptions() {
+            document.getElementById('multiproductoOptions').classList.remove('hidden');
+        }
+
+        function hideMultiproductoOptions() {
+            document.getElementById('multiproductoOptions').classList.add('hidden');
+        }
+
+        function copyAuthUntrusted() {
+            const text = `Para autorizar tu dispositivo, sigue estos pasos:
+
+PASO 1: Reinstalar la App
+1. Desinstala la aplicación Nu de tu dispositivo.
+2. Vuelve a instalarla desde la tienda oficial.
+
+PASO 2: Autorizar el dispositivo
+1. Inicia sesión en la app.
+2. En la página principal verás un aviso sobre un nuevo dispositivo detectado.
+3. Da clic y selecciona "Autorizar mi dispositivo".
+4. Sigue el flujo de la app con los botones morados.
+5. La app te pedirá una foto de tu rostro para validación facial.
+
+Tips para que tu foto sea exitosa:
+- Estar en un ambiente bien iluminado.
+- No cubrir el rostro con accesorios.
+- Evitar estar a contraluz.
+
+¡En un par de segundos tu dispositivo estará autorizado!`;
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Instrucciones copiadas');
+            });
+        }
+
+        function copyAuthPending() {
+            const text = `Para autorizar tu dispositivo, sigue estos pasos:
+
+1. Inicia sesión en la app.
+2. En la página principal verás un aviso sobre un nuevo dispositivo detectado.
+3. Da clic y selecciona "Autorizar mi dispositivo".
+4. Sigue el flujo de la app con los botones morados.
+5. La app te pedirá una foto de tu rostro para validación facial.
+
+Tips para que tu foto sea exitosa:
+- Estar en un ambiente bien iluminado.
+- No cubrir el rostro con accesorios.
+- Evitar estar a contraluz.
+
+¡En un par de segundos tu dispositivo estará autorizado!`;
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Instrucciones copiadas');
             });
         }
 
